@@ -14,8 +14,6 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
-# from dotenv import load_dotenv
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,14 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# env_path = Path(BASE_DIR) / '.env'
-# load_dotenv(dotenv_path=env_path)
 
 # Created a separate Secret Key which isn't used anywhere in production.
 # This reduces the number of vectors from which an attacker may access the key.
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "6cco@774t(o#bq*3tvvdx1t-vc(7-f*huibv54z5*=&q9ohovp"
 SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 
@@ -39,7 +34,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 # Otherwise it leaks lots of information about my source code, settings, etc.
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
