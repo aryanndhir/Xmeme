@@ -1,0 +1,9 @@
+# curl --location --request POST 'https://xmemesstream.herokuapp.com/memes/' --header 'Content-Type: application/json' --data '{"name": "ashok kumar","caption": "Is this a meme ?","url": "https://urlme.me/hello/typed_a_url/made_a_meme.jpg"}'
+# curl --location --request GET 'https://xmemesstream.herokuapp.com/memes'
+# curl --location --request GET 'https://xmemesstream.herokuapp.com/memes/2'
+# curl --location --request PATCH 'https://xmemesstream.herokuapp.com/memes/17' --header 'Content-Type: application/json' --data '{"caption": "Is this funny ?","url": "https://urlme.me/hello/typed_a_url/made_a_meme.jpg"}'
+
+# curl --location --request GET 'http://localhost:8081/memes'
+# curl --location --request GET 'http://localhost:8081/memes/23'
+# curl --location --request POST 'http://localhost:8081/memes' --header 'Content-Type: application/json' --data '{"name": "varun kumar","caption": "Is this a meme ?","url": "https://urlme.me/hello/typed_a_url/made_a_meme.jpg"}'
+# curl --location --request PATCH 'http://localhost:8081/memes/24' --header 'Content-Type: application/json' --data '{"caption": "Is this funny ?","url": "https://urlme.me/hello/typed_a_url/made_a_meme.jpg"}'
