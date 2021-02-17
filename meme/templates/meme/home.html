@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+        <style>
+
+            body {
+                margin-top:50px;
+                margin-left:130mm;
+            }
+            
+            .txtbox {
+                height:36px;
+                width: 150mm;
+            }
+            
+            .flex-container{
+                display: flex;
+                flex-wrap : wrap;
+                justify-content: center;
+                width : 100%;
+                height: 500px;
+                overflow:scroll;
+            }
+
+            .post-item{
+                width : 100%;
+                height: fit-content;
+            }
+
+            .form-popup{
+                display: none; 
+            }
+
+            .noshow{
+                display: none;
+            }
+        </style>
+        <title>Meme Stream</title>
+    </head>
+
+    <body>
+        <h1 style="font-size: 40px;">Meme Stream</h1><br>
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <form class="form-group" method="POST">
+
+            {% csrf_token %}
+
+            <label>Meme Owner</label><br>
+            
+            <div class="txtbox">{{ form.name }}</div>
+            
+            <br><label>Caption</label><br>
+            
+            <div class="txtbox">{{ form.caption }}</div>
+
+            <br><label>Meme URL</label><br>
+            
+            <div class="txtbox">{{ form.url }}</div><br>
+
+            <button class="btn btn-outline-info" type="submit">Submit Meme</button>
+
+        </form><br>
+        
+        <div class="container">
+
+            <div class="flex-container">
+            
+                {% for post in posts %}
+            
+                <div class="post-item">
+
+                    <h3>{{ post.name }}</h3>    {{ post.date_posted}}
+                    
+                    <p><br>{{ post.caption }}</p>
+
+                    <p><img src="{{ post.url }}" alt="pretend its a funny meme"></p>
+                    
+                    <button class="btn btn-outline-info" onclick="openForm({{post.id}})">Edit Meme</button><br>
+                    
+                    <div class="form-popup" id="{{post.id}}">
+
+                        <form class="form-group" method="POST">
+
+                            {% csrf_token %}
+
+                            <br><div class="noshow"><input type="number" id="id" name="id" value="{{post.id}}" readonly></div>
+
+                            <label>Caption</label><br>
+                            
+                            <div class="txtbox">{{ form2.caption }}</div>
+                            
+                            <br><label>Meme URL</label><br>
+                            
+                            <div class="txtbox">{{ form2.url }}</div><br> 
+
+                            <button class="btn btn-outline-info" type="submit" onclick="closeForm()">Update Meme</button>
+
+                        </form>
+                    </div>
+                    <br><br>
+                </div>
+                {% endfor%}
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script>
+            function openForm(id) {
+                if(document.getElementById(id).style.display == "none"){
+                    document.getElementById(id).style.display = "block"; 
+                }     
+                else{
+                    document.getElementById(id).style.display = "none";
+                }
+            }
+            
+            function closeForm(id) {
+              document.getElementById(id).style.display = "none";
+            }
+        </script>
+    </body>
+</html>
