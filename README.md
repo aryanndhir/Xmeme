@@ -1,2 +1,5 @@
 # Xmeme
-Built this mini-project as a task during Crio Winter of Doing using Django framework and REST API
+
+Meme sharing platform
+
+This project is build using Django framework where user can post a meme and view all the memes. The api is build using django rest framework.
