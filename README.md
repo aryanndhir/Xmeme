@@ -4,7 +4,10 @@
 https://xmemesstream.herokuapp.com/
 
 ## Project Description
-This project is built using Django framework where users can post memes and view all of them. The api is built using django rest framework.
+A Meme Stream Page where users can post memes by providing their name, a caption for the meme and the URL for the meme image as input. The page retrieves and displays the latest 100 posted Memes (names + meme images + caption).
+
+## Tech/framework used
+This project is built using Django framework where users can post memes and view all of them. The api is built using django REST framework.
 
 ## Prerequisites
 Run "install.sh" to deal with all the dependencies
