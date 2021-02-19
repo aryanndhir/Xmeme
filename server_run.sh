@@ -1,9 +1,17 @@
 #!/bin/bash
 
-cd src/django_project
+cd django_project/
 
 # Setup DB or any other environment variables you want to setup.
 
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py runserver 8081
+source virtual_env.sh
+
+pip install -r requirements.txt
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+sudo ufw allow 8081
+
+python manage.py runserver localhost:8081
