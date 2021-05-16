@@ -12,7 +12,7 @@ This project is built using Django framework where users can post memes and view
 ## Prerequisites
 Run "install.sh" to deal with all the dependencies
 
-## Serving the App : 
+## Serving the App
 Run "server_run.sh" to get your backend server up and running
 
 ## Flows
